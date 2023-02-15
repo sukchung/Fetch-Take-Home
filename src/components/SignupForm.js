@@ -52,7 +52,6 @@ export default function SignupForm() {
       },
     };
     const response = await fetch(url, fetchConfig);
-    console.log(response)
 
     if (response.ok) {
       event.target.reset();
