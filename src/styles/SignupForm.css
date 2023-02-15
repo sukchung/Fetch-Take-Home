@@ -1,0 +1,39 @@
+.small-container {
+  margin: auto;
+  width: 70%;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.heading {
+  font-size: 34px;
+}
+
+.icon {
+  margin: 10px 10px 15px 10px;
+  width: 35px;
+  height: 35px;
+}
+
+.center-select {
+  padding-top: 10px !important;
+}
+
+p,
+.login-font {
+  font-size: 12px;
+}
+
+.login-font {
+  color: rgb(255, 132, 0);
+  text-decoration: none;
+}
+
+.spacing {
+  padding: 3px 0 0 0;
+}
