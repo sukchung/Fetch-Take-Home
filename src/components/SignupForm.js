@@ -95,7 +95,7 @@ export default function SignupForm() {
               <input
                 onChange={handleChange}
                 placeholder="Email"
-                type="text"
+                type="email"
                 name="email"
                 id="email"
                 value={signup.email}
