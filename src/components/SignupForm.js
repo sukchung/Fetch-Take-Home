@@ -144,7 +144,7 @@ export default function SignupForm() {
             )}
             {checkSpecialChar && (
               <span className="red">
-                Password must have one special character.
+                Password must have at least one special character.
               </span>
             )}
             <div className="form-floating mb-3">
