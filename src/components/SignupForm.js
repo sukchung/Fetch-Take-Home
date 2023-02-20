@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
 
 import "../styles/SignupForm.css";
 
@@ -65,12 +64,12 @@ export default function SignupForm() {
       signup.name.split(" ")[1].charAt(0).toUpperCase() +
       signup.name.split(" ")[1].slice(1);
 
-    const newSignup = {
-      ...signup,
+    setSignup((prevSignup) => ({
+      ...prevSignup,
       name: `${capitalizedFirstName} ${capitalizedLastName}`,
-    };
+    }));
 
-    const formData = newSignup;
+    const formData = signup;
     const url = "https://frontend-take-home.fetchrewards.com/form";
     const fetchConfig = {
       method: "POST",
@@ -101,7 +100,7 @@ export default function SignupForm() {
       <div className="offset-3 col-6">
         <div className="p-4 mt-4">
           <div className="container">
-            <h2 className="heading">Sign up</h2>
+            <h2 className="heading">Sign Up</h2>
           </div>
           <form onSubmit={handleSubmit} id="create-signup-form">
             {checkName && (
@@ -140,7 +139,7 @@ export default function SignupForm() {
             </div>
             {checkPassword && (
               <span className="red">
-                Password must be 8 - 20 characters long.
+                Password must be 8 to 20 characters long.
               </span>
             )}
             {checkSpecialChar && (
@@ -171,7 +170,7 @@ export default function SignupForm() {
                 name="occupation"
                 id="occupation"
                 value={signup.occupation}
-                className="form-select center-select"
+                className="form-select"
                 required
               >
                 <option value="">Choose an occupation</option>
@@ -183,6 +182,7 @@ export default function SignupForm() {
                   );
                 })}
               </select>
+              <label htmlFor="occupation">Occupation</label>
             </div>
             <div className="form-floating mb-3">
               <select
@@ -190,7 +190,7 @@ export default function SignupForm() {
                 name="state"
                 id="state"
                 value={signup.state}
-                className="form-select center-select"
+                className="form-select"
                 required
               >
                 <option value="">Choose a state</option>
@@ -202,6 +202,7 @@ export default function SignupForm() {
                   );
                 })}
               </select>
+              <label htmlFor="state">State</label>
             </div>
             {successful && (
               <div className="alert alert-success" role="alert">
@@ -215,12 +216,7 @@ export default function SignupForm() {
             )}
             <button className="btn btn-warning">Sign up</button>
             <div>
-              <p className="spacing">
-                Already have a Fetch Rewards account?{" "}
-                <NavLink to="#" className="login-font">
-                  Log in
-                </NavLink>
-              </p>
+              <p className="spacing">Already have a Fetch Rewards account? </p>
             </div>
           </form>
         </div>
@@ -228,3 +224,4 @@ export default function SignupForm() {
     </div>
   );
 }
+
