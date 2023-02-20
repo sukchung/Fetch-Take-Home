@@ -8,7 +8,7 @@ The sign-up form includes fields for the user's full name, email, password, occu
 
 ## Minimum Requirements
 
-* Display a form with inputs for each field outlined above
+* Display a form with inputs for each field: full name, email, password, occupation, and state
 * Allow a user to complete and submit the form
 * Do not allow form submission without completing the entire form
 * Provide feedback upon successful form submission
@@ -28,7 +28,7 @@ The sign-up form includes fields for the user's full name, email, password, occu
 
 1. Clone this [repository](https://github.com/sukchung/Fetch-Take-Home.git) to your local computer
 2. Navigate or cd into the cloned repository
-3. Run the following commands on your terminal
+3. Run the following command on your terminal
     ```
     npm start
     ```
