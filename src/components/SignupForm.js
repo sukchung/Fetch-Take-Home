@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 import "../styles/SignupForm.css";
-import fetchLogo from "../images/fetch-logo.png";
 
 export default function SignupForm() {
   const [signup, setSignup] = useState({
@@ -14,7 +13,11 @@ export default function SignupForm() {
   });
   const [occupations, setOccupations] = useState([]);
   const [states, setStates] = useState([]);
-  const [signedUp, setSignedup] = useState(false);
+  const [successful, setSuccessful] = useState(false);
+  const [unSuccessful, setUnsuccessful] = useState(false);
+  const [checkName, setCheckName] = useState(false);
+  const [checkPassword, setCheckPassword] = useState(false);
+  const [checkSpecialChar, setCheckSpecialChar] = useState(false);
 
   useEffect(() => {
     async function getData() {
@@ -42,7 +45,32 @@ export default function SignupForm() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const formData = signup;
+    const specialRegex = /[$&+,:;=?@#|'<>.^*()%!-]/;
+
+    if (signup.name.indexOf(" ") === -1) {
+      setCheckName(true);
+      return;
+    } else if (signup.password.length < 8 || signup.password.length > 20) {
+      setCheckPassword(true);
+      return;
+    } else if (!specialRegex.test(signup.password)) {
+      setCheckSpecialChar(true);
+      return;
+    }
+
+    const capitalizedFirstName =
+      signup.name.split(" ")[0].charAt(0).toUpperCase() +
+      signup.name.split(" ")[0].slice(1);
+    const capitalizedLastName =
+      signup.name.split(" ")[1].charAt(0).toUpperCase() +
+      signup.name.split(" ")[1].slice(1);
+
+    const newSignup = {
+      ...signup,
+      name: `${capitalizedFirstName} ${capitalizedLastName}`,
+    };
+
+    const formData = newSignup;
     const url = "https://frontend-take-home.fetchrewards.com/form";
     const fetchConfig = {
       method: "POST",
@@ -62,10 +90,9 @@ export default function SignupForm() {
         occupation: "",
         state: "",
       });
-      setSignedup(true);
+      setSuccessful(true);
     } else if (!response.ok) {
-      const message = `${response.status}: ${response.statusText}`;
-      throw new Error(message);
+      setUnsuccessful(true);
     }
   }
 
@@ -75,12 +102,19 @@ export default function SignupForm() {
         <div className="p-4 mt-4">
           <div className="container">
             <h2 className="heading">Sign up</h2>
-            <img src={fetchLogo} className="icon" alt="icon" />
           </div>
           <form onSubmit={handleSubmit} id="create-signup-form">
+            {checkName && (
+              <span className="red">
+                Name must contain first name and last name.
+              </span>
+            )}
             <div className="form-floating mb-3 input-sm">
               <input
-                onChange={handleChange}
+                onChange={(event) => {
+                  setCheckName(false);
+                  handleChange(event);
+                }}
                 placeholder="Name"
                 type="text"
                 name="name"
@@ -104,9 +138,23 @@ export default function SignupForm() {
               />
               <label htmlFor="email">Email</label>
             </div>
+            {checkPassword && (
+              <span className="red">
+                Password must be 8 - 20 characters long.
+              </span>
+            )}
+            {checkSpecialChar && (
+              <span className="red">
+                Password must have one special character.
+              </span>
+            )}
             <div className="form-floating mb-3">
               <input
-                onChange={handleChange}
+                onChange={(event) => {
+                  setCheckPassword(false);
+                  setCheckSpecialChar(false);
+                  handleChange(event);
+                }}
                 placeholder="Password"
                 type="password"
                 name="password"
@@ -155,9 +203,14 @@ export default function SignupForm() {
                 })}
               </select>
             </div>
-            {signedUp && (
+            {successful && (
               <div className="alert alert-success" role="alert">
-                Thank you for joining Fetch Rewards!
+                Account was created successfully!
+              </div>
+            )}
+            {unSuccessful && (
+              <div className="alert alert-danger" role="alert">
+                Account creation was unsuccessful.
               </div>
             )}
             <button className="btn btn-warning">Sign up</button>

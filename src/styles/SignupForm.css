@@ -32,3 +32,7 @@ p,
 .spacing {
   padding: 3px 0 0 0;
 }
+
+.red {
+  color: red;
+}
