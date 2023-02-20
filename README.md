@@ -21,7 +21,7 @@ The sign-up form includes fields for the user's full name, email, password, occu
 * Check if name has first name and last name
 * Have the name be capitalized before submitting the form
 * Check if the password is 8-20 characters long
-* Check if there is at least one special character in the password
+* Check if the password has at least one special character
 * Create unit tests
 
 ## Getting Started
