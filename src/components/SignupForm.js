@@ -72,7 +72,7 @@ export default function SignupForm() {
   return (
     <div className="row">
       <div className="offset-3 col-6">
-        <div className="p-4 mt-4 small-container">
+        <div className="p-4 mt-4">
           <div className="container">
             <h2 className="heading">Sign up</h2>
             <img src={fetchLogo} className="icon" alt="icon" />
