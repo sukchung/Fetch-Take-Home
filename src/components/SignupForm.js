@@ -215,13 +215,9 @@ export default function SignupForm() {
               </div>
             )}
             <button className="btn btn-warning">Sign up</button>
-            <div>
-              <p className="spacing">Already have a Fetch Rewards account? </p>
-            </div>
           </form>
         </div>
       </div>
     </div>
   );
 }
-

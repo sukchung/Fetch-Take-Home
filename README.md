@@ -27,7 +27,7 @@ The sign-up form includes fields for the user's full name, email, password, occu
 ## Getting Started
 
 1. Clone this [repository](https://github.com/sukchung/Fetch-Take-Home.git) to your local computer
-2. Change the current repository to the cloned repository
+2. Navigate or cd into the cloned repository
 3. Run the following commands on your terminal
     ```
     npm start
