@@ -12,8 +12,17 @@ The sign-up form includes fields for the user's full name, email, password, occu
 * Allow a user to complete and submit the form
 * Do not allow form submission without completing the entire form
 * Provide feedback upon successful form submission
-* Have its soure code stored in a code repository
+* Have its source code stored in a code repository
 * Be hosted on the internet
+
+## Additions
+
+* Make UI more responsive to different window sizes
+* Check if name has first name and last name
+* Have the name be capitalized before submitting the form
+* Check if the password is 8-20 characters long
+* Check if there is at least one special character in the password
+* Create unit tests
 
 ## Getting Started
 
