@@ -26,7 +26,7 @@ The sign-up form includes fields for the user's full name, email, password, occu
 
 ## Getting Started
 
-1. Clone this [repository](https://github.com/sukchung/Fetch-Take-Home.git) to your local computer
+1. Clone this [repository](https://github.com/sukchung/Fetch-Take-Home) to your local computer
 2. Navigate or cd into the cloned repository
 3. Run the following command on your terminal
     ```
